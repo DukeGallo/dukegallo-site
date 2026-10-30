@@ -1,0 +1,33 @@
+{
+  "slug": "mortgage-insurance-pmi-vs-mip",
+  "title": "PMI vs. MIP: How Mortgage Insurance Works and How to Remove It",
+  "description": "Conventional PMI and FHA MIP follow different rules. Learn what each one is, how long it lasts, and the realistic ways to remove mortgage insurance.",
+  "date": "2026-10-29",
+  "category": "Homeowners",
+  "keywords": [
+    "PMI vs MIP",
+    "remove PMI",
+    "FHA mortgage insurance removal",
+    "private mortgage insurance",
+    "Homeowners Protection Act"
+  ],
+  "image": "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?fm=jpg&q=70&w=1600&auto=format&fit=crop",
+  "image_alt": "A white house partly hidden behind green trees",
+  "image_credit": "Phil Hearing",
+  "image_credit_url": "https://unsplash.com/@philhearing",
+  "faq": [
+    {
+      "q": "When can I cancel PMI on a conventional loan?",
+      "a": "Under the Homeowners Protection Act, you can request cancellation when your balance reaches 80% of the home's original value if you meet requirements, and PMI generally ends automatically at 78%."
+    },
+    {
+      "q": "Can I remove FHA MIP?",
+      "a": "If you put down less than 10%, FHA annual MIP generally lasts the life of the loan. With 10% or more down, it lasts 11 years. Many borrowers remove it by refinancing to a conventional loan."
+    },
+    {
+      "q": "Does home appreciation help remove PMI?",
+      "a": "It can. Some lenders allow PMI removal based on a new appraisal showing increased value, subject to their seasoning and payment-history rules."
+    }
+  ],
+  "body_html": "<p>Mortgage insurance has a bad reputation, but it's the reason millions of people can buy a home without a 20% down payment. It protects the lender, not you, and you pay for it. The key is understanding which kind you have, because the exit strategy is completely different for each.</p>\n\n<h2>Two different products</h2>\n<p><strong>PMI (private mortgage insurance)</strong> applies to conventional loans with less than 20% down. It's provided by private companies, and its cost depends heavily on your credit score and down payment.</p>\n<p><strong>MIP (mortgage insurance premium)</strong> applies to FHA loans. It includes an upfront premium, usually added to the loan, and an annual premium paid monthly. The rules are set by HUD, not by your credit score.</p>\n\n<h2>How long each one lasts</h2>\n<div class=\"tbl\"><table>\n<thead><tr><th></th><th>Conventional PMI</th><th>FHA MIP</th></tr></thead>\n<tbody>\n<tr><td>Request removal</td><td>When the balance reaches 80% of original value, if requirements are met</td><td>Not by request in most cases</td></tr>\n<tr><td>Automatic end</td><td>Generally at 78% of original value</td><td>After 11 years if you put 10% or more down</td></tr>\n<tr><td>Less than 10% down</td><td>Same cancellation rules apply</td><td>Generally lasts the life of the loan</td></tr>\n<tr><td>Using appreciation</td><td>Some lenders allow removal based on a new appraisal</td><td>Usually requires refinancing</td></tr>\n</tbody>\n</table></div>\n<p>The PMI cancellation rules come from the federal Homeowners Protection Act. The <a href=\"https://www.consumerfinance.gov/ask-cfpb/when-can-i-remove-private-mortgage-insurance-pmi-from-my-loan-en-202/\" target=\"_blank\" rel=\"noopener\">CFPB explains them in plain language</a>, including the payment-history requirements.</p>\n\n<h2>Paths to removing PMI</h2>\n<ol>\n<li><strong>Pay down to 80%.</strong> Extra principal payments get you there faster. Then submit a written request to your servicer.</li>\n<li><strong>Use appreciation.</strong> Many servicers allow removal based on a new appraisal after a seasoning period, with stricter thresholds in the early years.</li>\n<li><strong>Wait for automatic termination.</strong> It happens without a request once you reach the scheduled 78% point, as long as you're current.</li>\n<li><strong>Refinance.</strong> If your home has gained value, a refinance may leave you with no PMI at all, though the refinance needs to make sense on its own.</li>\n</ol>\n\n<h2>Paths to removing FHA MIP</h2>\n<p>For most FHA borrowers with less than 10% down, refinancing into a conventional loan is the realistic exit. That requires qualifying for the new loan and having enough equity, typically 20% to avoid PMI on the new loan. In appreciating markets, many homeowners reach that point sooner than they expected. Run the numbers using my guide on <a href=\"/blog/when-does-refinancing-make-sense/\">when refinancing makes sense</a>.</p>\n\n<h2>Should you avoid mortgage insurance at all costs?</h2>\n<p>Not necessarily. Waiting years to save 20% can mean missing appreciation and paying rent the whole time. Mortgage insurance is a cost of getting in sooner. The goal is to choose the right loan up front and have a plan to remove it later.</p>\n\n<h2>Ways to avoid mortgage insurance from the start</h2>\n<p>Not every buyer can or should avoid mortgage insurance, but there are a few approaches worth knowing about:</p>\n<ul>\n<li><strong>A larger down payment.</strong> Reaching 20% down on a conventional loan avoids PMI entirely.</li>\n<li><strong>VA loans.</strong> Eligible veterans and service members don't pay monthly mortgage insurance. See my post on <a href=\"/blog/va-loan-myths/\">VA loan myths</a>.</li>\n<li><strong>Piggyback financing.</strong> A first mortgage plus a second loan can sometimes avoid PMI, though the second loan has its own cost.</li>\n<li><strong>Lender-paid mortgage insurance.</strong> Some lenders build the cost into the rate instead of a separate premium. It can't be cancelled later, so it fits best for shorter holding periods.</li>\n</ul>\n<p>Each option has trade-offs. The best one depends on your savings, how long you'll keep the loan, and whether you value a lower payment now or flexibility later.</p>\n\n<h2>Keep an eye on your equity</h2>\n<p>Many homeowners in Southern California have more equity than they realize. Check your loan balance against a realistic estimate of your home's value once a year. If you're getting close to the threshold where PMI could be removed or an FHA refinance becomes possible, it's worth a conversation.</p>\n\n<h2>The takeaway</h2>\n<p>PMI is designed to be temporary and can often be removed by request or with appreciation. FHA MIP often requires a refinance to remove. Know which one you have, track your equity, and check in with your loan officer once a year to see whether you've crossed the line.</p>"
+}
