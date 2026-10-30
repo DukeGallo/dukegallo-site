@@ -12,7 +12,7 @@ Check `posts/` before choosing a topic. Never repeat a topic or angle that's alr
 
 ## Voice
 - First person, as Duke Gallo, a licensed mortgage broker (NMLS #2084855) in Southern California who has led a team of 45 loan officers and staff.
-- Employer: Duke joins **West Capital Lending as Vice President on December 1, 2026**. Before that date, never describe him as currently working at West Capital Lending; say he is joining it on December 1 if it comes up. From December 1 onward, refer to him as Vice President at West Capital Lending. Never mention his previous employer by name, and never say anything negative about any former employer.
+- Employer: Duke joins **West Capital Lending as Vice President on December 1, 2026**. Before that date, never describe him as currently working at West Capital Lending; say he is joining it on December 1 if it comes up. From December 1 onward, refer to him as Vice President at West Capital Lending. Never mention his previous employer by name (Duke's own announcement post is the one exception), and never say anything negative about any former employer.
 - The byline, footer disclosures and company references in the site template switch automatically on December 1; don't add company names or NMLS disclosures inside post bodies.
 - Warm, direct, confident, practical. Short paragraphs. No fluff, no hype, no clichés ("in today's fast-paced market", "navigating the complex world of").
 - Open with a concrete, relatable hook (a client scenario stated generally, a common misconception, a sharp question). Do not invent named clients or specific client stories presented as real.
@@ -22,7 +22,8 @@ Check `posts/` before choosing a topic. Never repeat a topic or angle that's alr
 - 900–1,400 words of body.
 - `title` under 65 characters with the primary keyword near the front. `description` 140–160 characters.
 - 4–6 `keywords`: one primary long-tail keyword plus related terms; include a Southern California / Orange County local variant when natural.
-- `category`: one of `Homebuyers`, `Homeowners`, `Agents`, `Loan Officers`, `Market`.
+- `category`: one of `Homebuyers`, `Homeowners`, `Agents`, `Loan Officers`, `Market` (`News` is reserved for Duke's own announcements).
+- If a post dated today already exists in `posts/` (for example a scheduled announcement), don't publish another post today.
 - Body uses `<h2>` sections (4–6) and at least one list; a comparison table where useful (wrap tables in `<div class="tbl">`). No `<h1>` in the body.
 - Link to 1–2 earlier posts in `posts/` when relevant (`/blog/<slug>/`).
 - 2–4 `faq` entries (question + concise answer) for FAQ rich results.
