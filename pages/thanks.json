@@ -1,0 +1,7 @@
+{
+  "slug": "thanks",
+  "title": "Thank You | Duke Gallo",
+  "noindex": true,
+  "description": "Thanks for reaching out to Duke Gallo. Your message was received and Duke will be in touch soon, usually within one business day of your submission.",
+  "body_html": "\n<div class=\"label\">Message received</div>\n<h1>Thanks for reaching out</h1>\n<div class=\"body\">\n<p>Your message is on its way to me, and I'll get back to you soon, usually the same business day.</p>\n<p>If it's time-sensitive, call or text me at <a href=\"tel:+19496885959\">(949) 688-5959</a>.</p>\n<p>In the meantime, you might find something useful on <a href=\"/blog/\">the blog</a>.</p>\n</div>\n"
+}

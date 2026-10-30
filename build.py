@@ -33,6 +33,7 @@ if AT_WCL:
         "ABOUT_NOW": "Today I'm a Vice President at West Capital Lending.",
         "LICENSE_LINE": f"Duke Gallo, NMLS #{NMLS}, licensed by the California Department of Financial Protection and Innovation · West Capital Lending, Inc., NMLS #{WCL_NMLS} · Equal Housing Opportunity.",
         "BYLINE": "Vice President, West Capital Lending",
+        "JOIN_LEAD": "I'm a Vice President at West Capital Lending, building a team of loan officers who want to grow, serve clients well, and have a leader in their corner.",
     }
     OG_FILE = "og-image.jpg"
 else:
@@ -45,6 +46,7 @@ else:
         "ABOUT_NOW": "On December 1, 2026, I'm joining West Capital Lending as Vice President.",
         "LICENSE_LINE": f"Duke Gallo, NMLS #{NMLS}, licensed by the California Department of Financial Protection and Innovation · Joining West Capital Lending, Inc. (NMLS #{WCL_NMLS}) on December 1, 2026 · Equal Housing Opportunity.",
         "BYLINE": "Mortgage broker, NMLS #" + NMLS,
+        "JOIN_LEAD": "On December 1, 2026, I'm joining West Capital Lending as Vice President, and I'm building a team of loan officers who want to grow, serve clients well, and have a leader in their corner.",
     }
     OG_FILE = "og-image-joining.jpg"
 OG_DEFAULT = f"{SITE}/{OG_FILE}"
@@ -131,6 +133,19 @@ article .dek{font-size:20px;color:var(--muted);margin:0 0 24px;line-height:1.5}
 .more .cards{padding-block:24px 0}
 footer{padding-block:32px 48px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
 footer p{margin:0 0 8px;max-width:90ch}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--accent);color:var(--accent);background:none}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.cta-inline{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 8px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.form .full{grid-column:1/-1}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500;color:var(--muted)}
+.form input,.form select,.form textarea{font:400 16px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-height:46px;width:100%}
+.form textarea{min-height:110px;resize:vertical}
+.form .check{flex-direction:row;align-items:flex-start;gap:10px;font-weight:400;font-size:13.5px;line-height:1.5}
+.form .check input{width:20px;min-height:20px;margin-top:2px;flex:none}
+.form button{justify-self:start;cursor:pointer;font-family:var(--body)}
+.hp{position:absolute;left:-9999px}
+@media (max-width:600px){.form{grid-template-columns:1fr}}
 @media (max-width:820px){.cards{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.cards{grid-template-columns:1fr}nav{gap:16px}}
 """
@@ -138,7 +153,7 @@ footer p{margin:0 0 8px;max-width:90ch}
 FOOTER = f"""<footer>
     <p>{PH["LICENSE_LINE"]} Verify licensing at <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener">nmlsconsumeraccess.org</a>.</p>
     <p>Blog content is for general education only and is not a commitment to lend, a rate quote, or financial, legal, or tax advice. All loans are subject to credit approval and underwriting. Not all applicants will qualify. Programs and guidelines change; contact me for current details.</p>
-    <p><a href="{INSTAGRAM}" target="_blank" rel="noopener">Instagram</a> · <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a> · <a href="/blog/">Blog</a> · <a href="/blog/feed.xml">RSS</a></p>
+    <p><a href="{INSTAGRAM}" target="_blank" rel="noopener">Instagram</a> · <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a> · <a href="/blog/">Blog</a> · <a href="/join/">Join my team</a> · <a href="/privacy/">Privacy</a></p>
     <p>© {datetime.date.today().year} Duke Gallo</p>
   </footer>"""
 
@@ -146,11 +161,11 @@ def header(active):
     return f"""<header class="top">
     <a class="mark" href="/">DG</a>
     <nav aria-label="Primary">
-      <a href="/#about">About</a><a href="/#career">Career</a><a href="/blog/"{' aria-current="page"' if active=='blog' else ''}>Blog</a><a href="/#contact">Contact</a>
+      <a href="/#about">About</a><a href="/#career">Career</a><a href="/blog/"{' aria-current="page"' if active=='blog' else ''}>Blog</a><a href="/join/"{' aria-current="page"' if active=='join' else ''}>Join my team</a><a href="/#contact">Contact</a>
     </nav>
   </header>"""
 
-def page(title, desc, canonical, body, og_type="website", image=None, jsonld=None, extra_head=""):
+def page(title, desc, canonical, body, og_type="website", image=None, jsonld=None, extra_head="", noindex=False):
     img = image or OG_DEFAULT
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
     return f"""<!doctype html>
@@ -160,7 +175,7 @@ def page(title, desc, canonical, body, og_type="website", image=None, jsonld=Non
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
-<link rel="canonical" href="{canonical}">
+<link rel="canonical" href="{canonical}">{'\n<meta name="robots" content="noindex">' if noindex else ''}
 <meta name="author" content="{AUTHOR}">
 <meta property="og:type" content="{og_type}">
 <meta property="og:title" content="{esc(title)}">
@@ -259,6 +274,21 @@ open(os.path.join(dist, "blog", "index.html"), "w").write(page(
     jsonld={"@context": "https://schema.org", "@type": "Blog", "name": "The Duke Gallo Blog", "url": f"{SITE}/blog/",
             "author": {"@id": SITE + "/#duke"}, "publisher": PERSON}))
 
+# Standalone pages (src/pages/*.json)
+extra_pages = []
+for f in sorted(glob.glob(os.path.join(src, "pages", "*.json"))):
+    pg = json.load(open(f))
+    bodyh = pg["body_html"]
+    for k, v in PH.items():
+        bodyh = bodyh.replace("{{" + k + "}}", v)
+    url = f"{SITE}/{pg['slug']}/"
+    os.makedirs(os.path.join(dist, pg["slug"]), exist_ok=True)
+    open(os.path.join(dist, pg["slug"], "index.html"), "w").write(page(
+        pg["title"], pg["description"], url, header(pg["slug"]) + '\n  <main id="main"><article>' + bodyh + "</article></main>",
+        noindex=pg.get("noindex", False)))
+    if not pg.get("noindex"):
+        extra_pages.append(url)
+
 # Homepage
 home = open(os.path.join(src, "home.html")).read()
 for k, v in PH.items():
@@ -300,7 +330,7 @@ open(os.path.join(dist, "duke.jpg"), "wb").write(base64.b64decode(open(os.path.j
 
 # sitemap, robots, RSS
 today = datetime.date.today().isoformat()
-urls = [(SITE + "/", today), (SITE + "/blog/", posts[0]["date"] if posts else today)] + [(f"{SITE}/blog/{p['slug']}/", p.get("updated", p["date"])) for p in posts]
+urls = [(SITE + "/", today), (SITE + "/blog/", posts[0]["date"] if posts else today)] + [(u, today) for u in extra_pages] + [(f"{SITE}/blog/{p['slug']}/", p.get("updated", p["date"])) for p in posts]
 open(os.path.join(dist, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     "".join(f"  <url><loc>{u}</loc><lastmod>{d}</lastmod></url>\n" for u, d in urls) + "</urlset>\n")
 open(os.path.join(dist, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
