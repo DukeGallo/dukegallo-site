@@ -50,6 +50,11 @@ else:
     }
     OG_FILE = "og-image-joining.jpg"
 OG_DEFAULT = f"{SITE}/{OG_FILE}"
+_site = json.load(open(os.path.join(sys.argv[1], "site.json")))
+APPLY_URL = _site["apply_url"]
+STATES = _site["states"]
+STATE_NAMES = ", ".join(n for c, n in STATES)
+APPLY_A = f'href="{APPLY_URL}" target="_blank" rel="noopener"'
 ICONS = """<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -104,6 +109,7 @@ header.top{display:flex;justify-content:space-between;align-items:center;gap:16p
 .mark{font:700 18px/1 var(--display);color:var(--ink);text-decoration:none}
 nav{display:flex;gap:24px;flex-wrap:wrap}nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:15px}
 nav a:hover,nav a[aria-current]{color:var(--ink)}
+.nav-apply{color:var(--accent)!important;font-weight:600;border:1px solid var(--accent);border-radius:999px;padding:3px 12px}
 .blog-head{padding-block:48px 32px;border-bottom:1px solid var(--line)}
 .blog-head h1{font-size:clamp(40px,7vw,72px);margin:12px 0 0}
 .blog-head p{max-width:56ch;color:var(--muted);font-size:19px;margin:16px 0 0}
@@ -153,7 +159,8 @@ footer p{margin:0 0 8px;max-width:90ch}
 FOOTER = f"""<footer>
     <p>{PH["LICENSE_LINE"]} Verify licensing at <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener">nmlsconsumeraccess.org</a>.</p>
     <p>Blog content is for general education only and is not a commitment to lend, a rate quote, or financial, legal, or tax advice. All loans are subject to credit approval and underwriting. Not all applicants will qualify. Programs and guidelines change; contact me for current details.</p>
-    <p><a href="{INSTAGRAM}" target="_blank" rel="noopener">Instagram</a> · <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a> · <a href="/blog/">Blog</a> · <a href="/join/">Join my team</a> · <a href="/privacy/">Privacy</a></p>
+    <p><a href="{INSTAGRAM}" target="_blank" rel="noopener">Instagram</a> · <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a> · <a href="/blog/">Blog</a> · <a href="/join/">Join my team</a> · <a href="/privacy/">Privacy</a> · <a {APPLY_A}>Apply now</a></p>
+    <p>Licensed mortgage loan originator in: {STATE_NAMES}.</p>
     <p>© {datetime.date.today().year} Duke Gallo</p>
   </footer>"""
 
@@ -161,7 +168,7 @@ def header(active):
     return f"""<header class="top">
     <a class="mark" href="/">DG</a>
     <nav aria-label="Primary">
-      <a href="/#about">About</a><a href="/#career">Career</a><a href="/blog/"{' aria-current="page"' if active=='blog' else ''}>Blog</a><a href="/join/"{' aria-current="page"' if active=='join' else ''}>Join my team</a><a href="/#contact">Contact</a>
+      <a href="/#about">About</a><a href="/#career">Career</a><a href="/blog/"{' aria-current="page"' if active=='blog' else ''}>Blog</a><a href="/join/"{' aria-current="page"' if active=='join' else ''}>Join my team</a><a href="/#contact">Contact</a><a class="nav-apply" {APPLY_A}>Apply now</a>
     </nav>
   </header>"""
 
@@ -234,7 +241,8 @@ for i, p in enumerate(posts):
     </div>
     <aside class="cta">
       <h2>Have a question about your situation?</h2>
-      <p>Call or text me at <b>(949) 688-5959</b> or email <b>dgallo@westcapitallending.com</b>. Loan officers interested in joining my team are welcome to reach out too.</p>
+      <p>Call or text me at <a href="tel:+19496885959"><b>(949) 688-5959</b></a> or email <a href="mailto:dgallo@westcapitallending.com"><b>dgallo@westcapitallending.com</b></a>. Ready to get started? You can apply online in a few minutes.</p>
+      <p class="cta-inline" style="margin-top:14px"><a class="btn primary" {APPLY_A}>Apply now</a><a class="btn" href="/join/">Loan officer? Join my team</a></p>
     </aside>
   </article>
   {more}</main>"""

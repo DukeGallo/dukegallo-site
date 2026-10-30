@@ -39,6 +39,10 @@ h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.08;margin:0;te
 .btn.primary{background:var(--accent);color:var(--bg)}
 .btn:hover{filter:brightness(1.08)}
 .mobile-cta{display:none}
+.nav-apply{color:var(--accent)!important;font-weight:600!important;border:1px solid var(--accent);border-radius:999px;padding:3px 12px}
+.states{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}
+.states li{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font:500 13px var(--mono);font-variant-numeric:tabular-nums}
+.states abbr{text-decoration:none}
 .reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start}
 .review{margin:0;padding:24px;border:1px solid var(--line);border-radius:14px;background:var(--surface);display:flex;flex-direction:column;gap:14px}
 .review blockquote{margin:0;font-size:17px;line-height:1.55}
@@ -159,6 +163,7 @@ footer p{margin:0 0 8px;max-width:90ch}
             <a href="/blog/">Blog</a>
       <a href="/join/">Join my team</a>
       <a href="#contact">Contact</a>
+      <a class="nav-apply" href="https://airmortgage.io/apply/1bca20e8-35f1-407c-97fe-fcfcb1577cd4" target="_blank" rel="noopener">Apply now</a>
     </nav>
   </header>
 
@@ -170,10 +175,10 @@ footer p{margin:0 0 8px;max-width:90ch}
       <p class="intro">{{INTRO}}</p>
       <div class="meta"><span>Southern California</span><span>NMLS #2084855</span><span>UWM Advisory Council</span></div>
       <div class="cta-row">
-        <a class="btn primary" href="tel:+19496885959">Call (949) 688-5959</a>
+        <a class="btn primary" href="https://airmortgage.io/apply/1bca20e8-35f1-407c-97fe-fcfcb1577cd4" target="_blank" rel="noopener">Apply now</a>
+        <a class="btn" href="tel:+19496885959">Call (949) 688-5959</a>
         <a class="btn" href="mailto:dgallo@westcapitallending.com">Email me</a>
-        <a class="btn" href="/blog/">Read the blog</a>
-      </div>
+              </div>
     </div>
     <img class="portrait" src="/duke.jpg" alt="Portrait of Duke Gallo, mortgage broker in Southern California" width="800" height="800" fetchpriority="high">
   </div>
@@ -245,7 +250,11 @@ footer p{margin:0 0 8px;max-width:90ch}
     <div class="split">
       <div><div class="label">What I do</div><h2>Working with me</h2></div>
       <div class="prose">
-        <p>If you're buying a home, refinancing, or thinking about using your equity, I'll walk you through your options and the real costs behind each one, from the first call to closing.</p>
+        <p>If you're buying a home, refinancing, or thinking about using your equity, I'll walk you through your options and the real costs behind each one, from the first call to closing. I'm based in Southern California and work with clients across the country.</p>
+        <p style="margin-top:28px"><strong>Licensed in 34 states.</strong> I can help you buy or refinance in any of them.</p>
+        <ul class="states" aria-label="States where Duke Gallo is licensed: Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Idaho, Iowa, Kansas, Kentucky, Louisiana, Maine, Michigan, Minnesota, Mississippi, Missouri, Nebraska, New Hampshire, New Mexico, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, South Dakota, Tennessee, Texas, Virginia, West Virginia, Wisconsin, Wyoming"><li><abbr title="Alabama">AL</abbr></li><li><abbr title="Alaska">AK</abbr></li><li><abbr title="Arizona">AZ</abbr></li><li><abbr title="Arkansas">AR</abbr></li><li><abbr title="California">CA</abbr></li><li><abbr title="Colorado">CO</abbr></li><li><abbr title="Connecticut">CT</abbr></li><li><abbr title="Delaware">DE</abbr></li><li><abbr title="Florida">FL</abbr></li><li><abbr title="Idaho">ID</abbr></li><li><abbr title="Iowa">IA</abbr></li><li><abbr title="Kansas">KS</abbr></li><li><abbr title="Kentucky">KY</abbr></li><li><abbr title="Louisiana">LA</abbr></li><li><abbr title="Maine">ME</abbr></li><li><abbr title="Michigan">MI</abbr></li><li><abbr title="Minnesota">MN</abbr></li><li><abbr title="Mississippi">MS</abbr></li><li><abbr title="Missouri">MO</abbr></li><li><abbr title="Nebraska">NE</abbr></li><li><abbr title="New Hampshire">NH</abbr></li><li><abbr title="New Mexico">NM</abbr></li><li><abbr title="North Dakota">ND</abbr></li><li><abbr title="Ohio">OH</abbr></li><li><abbr title="Oklahoma">OK</abbr></li><li><abbr title="Oregon">OR</abbr></li><li><abbr title="Pennsylvania">PA</abbr></li><li><abbr title="South Dakota">SD</abbr></li><li><abbr title="Tennessee">TN</abbr></li><li><abbr title="Texas">TX</abbr></li><li><abbr title="Virginia">VA</abbr></li><li><abbr title="West Virginia">WV</abbr></li><li><abbr title="Wisconsin">WI</abbr></li><li><abbr title="Wyoming">WY</abbr></li></ul>
+        <p style="font-size:14px;color:var(--muted);margin-top:14px">Verify my licenses anytime at <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/2084855" target="_blank" rel="noopener">NMLS Consumer Access</a>.</p>
+        <p style="margin-top:20px"><a class="btn primary" href="https://airmortgage.io/apply/1bca20e8-35f1-407c-97fe-fcfcb1577cd4" target="_blank" rel="noopener">Start your application</a></p>
         <ul class="work-list">
           <li>Home purchase</li><li>Refinance</li><li>Cash-out</li><li>FHA</li><li>VA</li><li>Jumbo</li><li>Self-employed &amp; non-QM</li><li>Investment property</li>
         </ul>
@@ -284,11 +293,12 @@ footer p{margin:0 0 8px;max-width:90ch}
   <footer>
     <p>{{LICENSE_LINE}} Verify licensing at <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener">nmlsconsumeraccess.org</a>.</p>
     <p>This is not a commitment to lend. All loans are subject to credit approval and underwriting. Not all applicants will qualify.</p>
-    <p><a href="https://www.instagram.com/dukegallo/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.linkedin.com/in/duke-gallo/" target="_blank" rel="noopener">LinkedIn</a> · <a href="/blog/">Blog</a> · <a href="/join/">Join my team</a> · <a href="/privacy/">Privacy</a></p>
+    <p><a href="https://www.instagram.com/dukegallo/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.linkedin.com/in/duke-gallo/" target="_blank" rel="noopener">LinkedIn</a> · <a href="/blog/">Blog</a> · <a href="/join/">Join my team</a> · <a href="/privacy/">Privacy</a> · <a href="https://airmortgage.io/apply/1bca20e8-35f1-407c-97fe-fcfcb1577cd4" target="_blank" rel="noopener">Apply now</a></p>
+    <p>Licensed mortgage loan originator in: Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Idaho, Iowa, Kansas, Kentucky, Louisiana, Maine, Michigan, Minnesota, Mississippi, Missouri, Nebraska, New Hampshire, New Mexico, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, South Dakota, Tennessee, Texas, Virginia, West Virginia, Wisconsin, Wyoming.</p>
     <p>© {{YEAR}} Duke Gallo</p>
   </footer>
 </div>
-<nav class="mobile-cta" aria-label="Quick contact"><a class="btn primary" href="tel:+19496885959">Call</a><a class="btn" href="sms:+19496885959">Text</a><a class="btn" href="mailto:dgallo@westcapitallending.com">Email</a></nav>
+<nav class="mobile-cta" aria-label="Quick contact"><a class="btn primary" href="https://airmortgage.io/apply/1bca20e8-35f1-407c-97fe-fcfcb1577cd4" target="_blank" rel="noopener">Apply</a><a class="btn" href="tel:+19496885959">Call</a><a class="btn" href="sms:+19496885959">Text</a></nav>
 
 
 
