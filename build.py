@@ -113,6 +113,10 @@ nav a:hover,nav a[aria-current]{color:var(--ink)}
 .blog-head{padding-block:48px 32px;border-bottom:1px solid var(--line)}
 .blog-head h1{font-size:clamp(40px,7vw,72px);margin:12px 0 0}
 .blog-head p{max-width:56ch;color:var(--muted);font-size:19px;margin:16px 0 0}
+.filters{display:flex;flex-wrap:wrap;gap:8px;padding-top:28px}
+.fchip{font:500 14px var(--body);min-height:40px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.fchip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.card[hidden]{display:none}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 28px;padding-block:48px 72px}
 .card{display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;min-width:0}
 .card img{aspect-ratio:16/10;object-fit:cover;width:100%;border-radius:12px;background:var(--accent-soft)}
@@ -212,7 +216,7 @@ def page(title, desc, canonical, body, og_type="website", image=None, jsonld=Non
 
 def small(u): return u.replace("w=1600", "w=720")
 def card(p, h="h2"):
-    return f"""<a class="card" href="/blog/{p['slug']}/">
+    return f"""<a class="card" data-cat="{esc(p['category'])}" href="/blog/{p['slug']}/">
         <img src="{esc(small(p['image']))}" alt="{esc(p['image_alt'])}" loading="lazy" decoding="async" width="720" height="450">
         <div class="meta"><span>{esc(p['category'])}</span><span>{nice_date(p['date'])}</span></div>
         <{h}>{esc(p['title'])}</{h}>
@@ -267,13 +271,17 @@ for i, p in enumerate(posts):
 
 # Blog index
 cards = "".join(card(p) for p in posts) or '<p>New posts are on the way.</p>'
+cats = sorted({p["category"] for p in posts})
+filters = '<div class="filters" role="group" aria-label="Filter posts by topic"><button type="button" class="fchip" aria-pressed="true" data-cat="">All</button>' + "".join(f'<button type="button" class="fchip" aria-pressed="false" data-cat="{esc(c)}">{esc(c)}</button>' for c in cats) + "</div>"
+filter_js = """<script>(function(){var b=document.querySelectorAll('.fchip'),c=document.querySelectorAll('.cards .card');b.forEach(function(x){x.addEventListener('click',function(){b.forEach(function(y){y.setAttribute('aria-pressed',y===x)});var k=x.dataset.cat;c.forEach(function(d){d.hidden=!!k&&d.dataset.cat!==k})})})})();</script>"""
 blog_body = f"""{header('blog')}
   <main id="main"><div class="blog-head">
     <div class="label">The Duke Gallo Blog</div>
     <h1>Mortgages, real estate, and building a team</h1>
     <p>Plain-English guides for homebuyers and homeowners, practical notes for real estate agents, and straight talk for loan officers thinking about their next move.</p>
   </div>
-  <div class="cards">{cards}</div></main>"""
+  {filters}
+  <div class="cards">{cards}</div></main>{filter_js}"""
 os.makedirs(os.path.join(dist, "blog"), exist_ok=True)
 open(os.path.join(dist, "blog", "index.html"), "w").write(page(
     "Mortgage & Real Estate Blog | Duke Gallo",
@@ -310,7 +318,8 @@ if posts:
     home = home.replace("</style>", ".bloglist{display:grid}.bl{display:grid;grid-template-columns:150px 1fr;gap:16px;padding-block:18px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}.bl:first-child{padding-top:0}.bl-d{font:500 13px var(--mono);color:var(--muted);padding-top:4px}.bl-t{font:700 20px/1.25 var(--display)}.bl:hover .bl-t{color:var(--accent)}@media(max-width:820px){.bl{grid-template-columns:1fr;gap:4px}}\n</style>", 1)
 home = home.replace("{{LATEST_POSTS}}", latest)
 home_ld = {"@context": "https://schema.org", "@graph": [dict(PERSON),
-    {"@type": "WebSite", "@id": SITE + "/#site", "url": SITE + "/", "name": "Duke Gallo", "publisher": {"@id": SITE + "/#duke"}}]}
+    {"@type": "WebSite", "@id": SITE + "/#site", "url": SITE + "/", "name": "Duke Gallo", "publisher": {"@id": SITE + "/#duke"}},
+    {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": f["q"], "acceptedAnswer": {"@type": "Answer", "text": f["a"]}} for f in json.load(open(os.path.join(src, "home_faq.json")))]}]}
 home_title = re.search(r"<title>(.*?)</title>", home).group(1)
 home_desc = re.search(r'<meta name="description" content="(.*?)">', home).group(1)
 head_extra = f"""<link rel="canonical" href="{SITE}/">

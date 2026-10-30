@@ -39,6 +39,18 @@ h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.08;margin:0;te
 .btn.primary{background:var(--accent);color:var(--bg)}
 .btn:hover{filter:brightness(1.08)}
 .mobile-cta{display:none}
+.svcs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+.svc{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);background:var(--surface)}
+.svc h3{font-size:18px}.svc p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.5}
+.svc span{margin-top:auto;padding-top:6px;color:var(--accent);font-size:14px;font-weight:600}
+.svc:hover{border-color:var(--accent)}
+.faq{border-bottom:1px solid var(--line);padding-block:4px}
+.faq summary{cursor:pointer;list-style:none;padding:14px 32px 14px 0;font:700 18px/1.3 var(--display);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font:400 22px var(--body);color:var(--accent)}
+.faq[open] summary::after{content:"–"}
+.faq p{margin:0 0 16px;color:var(--muted);max-width:62ch}
+@media (max-width:600px){.svcs{grid-template-columns:1fr}}
 .nav-apply{color:var(--accent)!important;font-weight:600!important;border:1px solid var(--accent);border-radius:999px;padding:3px 12px}
 .states{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}
 .states li{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font:500 13px var(--mono);font-variant-numeric:tabular-nums}
@@ -98,7 +110,7 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 .fact .k{font:500 34px/1 var(--mono);font-variant-numeric:tabular-nums}
 .fact .d{color:var(--muted);font-size:14.5px;margin-top:8px}
 
-.life{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.life{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .life .tile{display:flex;flex-direction:column;gap:12px}
 .life .img{aspect-ratio:4/3;max-width:100%;border-radius:12px;background:var(--accent-soft);color:var(--accent);
   display:flex;align-items:flex-end;justify-content:space-between;padding:18px;gap:12px}
@@ -188,7 +200,8 @@ footer p{margin:0 0 8px;max-width:90ch}
       <div><div class="label">About</div><h2>A little about me</h2></div>
       <div class="prose">
         <p>I've built my career in mortgage lending, growing from running a branch to leading a team of 45 loan officers and support staff. {{ABOUT_NOW}}</p>
-        <p>Today I focus on growing teams, mentoring loan officers, and making sure every client gets clear answers and a smooth path to closing. I'm also proud to serve on United Wholesale Mortgage's Advisory Council, where brokers give direct feedback on the tools and products we use every day.</p>
+        <p>My approach with clients starts with listening. A home loan is one of the biggest financial decisions most people ever make, and you deserve to understand every part of it: your options, the real costs, and what happens next. My goal is to make every borrower feel like the most important person in my pipeline, because to me, you are.</p>
+        <p>As a leader, I focus on growing teams, mentoring loan officers, and building a culture where people share what works and everyone wins together. I'm also proud to serve on United Wholesale Mortgage's Advisory Council, where brokers give direct feedback on the tools and products we use every day.</p>
       </div>
     </div>
   </section>
@@ -225,9 +238,24 @@ footer p{margin:0 0 8px;max-width:90ch}
       <div><div class="label">Outside of work</div><h2>What I'm into</h2></div>
       <div class="life">
         <div class="tile"><div class="img"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 27l36-13c2-.7 3.6 1.4 2.3 3L30 30l-3 12-5-9-9-4-7-2z"/><path d="M22 33l8-3"/></svg><span class="stat">Family first</span></div><h3>Traveling</h3><p>Exploring new places with my wife and daughter. Some of our best memories happen far from home.</p></div>
-        <div class="tile"><div class="img"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5h18l-1 12a8 8 0 0 1-16 0L15 5z"/><path d="M15.6 13h16.8"/><path d="M24 25v15"/><path d="M16 42h16"/></svg><span class="stat">Paired with a Cab</span></div><h3>Cooking</h3><p>I'll cook just about anything, as long as it pairs well with a California Cabernet.</p></div>
+        <div class="tile"><div class="img"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5h18l-1 12a8 8 0 0 1-16 0L15 5z"/><path d="M15.6 13h16.8"/><path d="M24 25v15"/><path d="M16 42h16"/></svg><span class="stat">Paired with a Cab</span></div><h3>Cooking</h3><p>Italian food is my favorite, but I'll cook just about anything, as long as it pairs well with a California Cabernet.</p></div>
         <div class="tile"><div class="img"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="6"/><circle cx="24" cy="24" r="1.2"/><path d="M24 10a14 14 0 0 1 14 14"/></svg><span class="stat">600+ records</span></div><h3>Collecting vinyl</h3><p>My collection is past 600 records and still growing. There's always one more to track down.</p></div>
+        <div class="tile"><div class="img"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 42V6l16 7-16 7"/><path d="M8 42h32"/><circle cx="31" cy="36" r="3"/></svg><span class="stat">Early tee times</span></div><h3>Golf and the coast</h3><p>A round of golf, an early beach hike, or a stop at the Laguna Beach farmers market for something fresh to cook.</p></div>
       </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="split">
+      <div><div class="label">How it works</div><h2>From first call to keys</h2></div>
+      <ol class="timeline">
+        <li><span class="when">Step 1</span><div><h3>A quick conversation</h3><p>We talk about your goals, timeline, and budget. No pressure, no jargon, and no cost to get answers.</p></div></li>
+        <li><span class="when">Step 2</span><div><h3>A real pre-approval</h3><p>I review your credit, income, and assets up front so your <a href="/blog/prequalified-vs-preapproved/">pre-approval</a> carries weight with sellers.</p></div></li>
+        <li><span class="when">Step 3</span><div><h3>Options, side by side</h3><p>As a broker, I compare programs across many lenders and show you the trade-offs clearly, so you choose with confidence.</p></div></li>
+        <li><span class="when">Step 4</span><div><h3>A smooth escrow</h3><p>Proactive updates for you and your agent, fast answers to conditions, and no surprises on closing day.</p></div></li>
+      </ol>
+      <div></div>
+      <p style="margin:8px 0 0"><a class="btn primary" href="https://airmortgage.io/apply/1bca20e8-35f1-407c-97fe-fcfcb1577cd4" target="_blank" rel="noopener">Apply now</a> <a class="btn" href="tel:+19496885959" style="margin-left:6px">Call (949) 688-5959</a></p>
     </div>
   </section>
 
@@ -255,10 +283,15 @@ footer p{margin:0 0 8px;max-width:90ch}
         <ul class="states" aria-label="States where Duke Gallo is licensed: Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Idaho, Iowa, Kansas, Kentucky, Louisiana, Maine, Michigan, Minnesota, Mississippi, Missouri, Nebraska, New Hampshire, New Mexico, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, South Dakota, Tennessee, Texas, Virginia, West Virginia, Wisconsin, Wyoming"><li><abbr title="Alabama">AL</abbr></li><li><abbr title="Alaska">AK</abbr></li><li><abbr title="Arizona">AZ</abbr></li><li><abbr title="Arkansas">AR</abbr></li><li><abbr title="California">CA</abbr></li><li><abbr title="Colorado">CO</abbr></li><li><abbr title="Connecticut">CT</abbr></li><li><abbr title="Delaware">DE</abbr></li><li><abbr title="Florida">FL</abbr></li><li><abbr title="Idaho">ID</abbr></li><li><abbr title="Iowa">IA</abbr></li><li><abbr title="Kansas">KS</abbr></li><li><abbr title="Kentucky">KY</abbr></li><li><abbr title="Louisiana">LA</abbr></li><li><abbr title="Maine">ME</abbr></li><li><abbr title="Michigan">MI</abbr></li><li><abbr title="Minnesota">MN</abbr></li><li><abbr title="Mississippi">MS</abbr></li><li><abbr title="Missouri">MO</abbr></li><li><abbr title="Nebraska">NE</abbr></li><li><abbr title="New Hampshire">NH</abbr></li><li><abbr title="New Mexico">NM</abbr></li><li><abbr title="North Dakota">ND</abbr></li><li><abbr title="Ohio">OH</abbr></li><li><abbr title="Oklahoma">OK</abbr></li><li><abbr title="Oregon">OR</abbr></li><li><abbr title="Pennsylvania">PA</abbr></li><li><abbr title="South Dakota">SD</abbr></li><li><abbr title="Tennessee">TN</abbr></li><li><abbr title="Texas">TX</abbr></li><li><abbr title="Virginia">VA</abbr></li><li><abbr title="West Virginia">WV</abbr></li><li><abbr title="Wisconsin">WI</abbr></li><li><abbr title="Wyoming">WY</abbr></li></ul>
         <p style="font-size:14px;color:var(--muted);margin-top:14px">Verify my licenses anytime at <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/2084855" target="_blank" rel="noopener">NMLS Consumer Access</a>.</p>
         <p style="margin-top:20px"><a class="btn primary" href="https://airmortgage.io/apply/1bca20e8-35f1-407c-97fe-fcfcb1577cd4" target="_blank" rel="noopener">Start your application</a></p>
-        <ul class="work-list">
-          <li>Home purchase</li><li>Refinance</li><li>Cash-out</li><li>FHA</li><li>VA</li><li>Jumbo</li><li>Self-employed &amp; non-QM</li><li>Investment property</li>
-        </ul>
+        <div class="svcs"><a class="svc" href="/blog/prequalified-vs-preapproved/"><h3>Home purchase</h3><p>First home or fifth, with a pre-approval that helps your offer stand out.</p><span>Learn more →</span></a><a class="svc" href="/blog/when-does-refinancing-make-sense/"><h3>Refinance</h3><p>Lower your payment, shorten your term, or remove mortgage insurance, if the math works.</p><span>Learn more →</span></a><a class="svc" href="/blog/cash-out-refinance-vs-heloc/"><h3>Cash-out and equity</h3><p>Compare a cash-out refinance with a HELOC before you tap your equity.</p><span>Learn more →</span></a><a class="svc" href="/blog/va-loan-myths/"><h3>FHA and VA</h3><p>Flexible programs for many buyers, and the benefit veterans earned.</p><span>Learn more →</span></a><a class="svc" href="/blog/jumbo-loans-southern-california/"><h3>Jumbo</h3><p>Financing above the conforming limit, common across coastal California.</p><span>Learn more →</span></a><a class="svc" href="/blog/bank-statement-loans-self-employed/"><h3>Self-employed</h3><p>Bank statement and other non-QM options when tax returns don't tell the whole story.</p><span>Learn more →</span></a><a class="svc" href="/blog/dscr-loans-real-estate-investors/"><h3>Investment property</h3><p>DSCR and conventional options that qualify on the property or your income.</p><span>Learn more →</span></a><a class="svc" href="/blog/calhfa-down-payment-assistance/"><h3>First-time buyers</h3><p>Down payment assistance, gift funds, and a plain-English walk-through of every step.</p><span>Learn more →</span></a></div>
       </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="split">
+      <div><div class="label">Questions</div><h2>Common questions</h2></div>
+      <div><details class="faq"><summary>How much does it cost to talk with you?</summary><p>Nothing. A conversation about your goals and options is free, and there's no obligation.</p></details><details class="faq"><summary>How long does it take to get pre-approved?</summary><p>Often a day or two once I have your documents. Having pay stubs, W-2s or tax returns, and bank statements ready speeds things up.</p></details><details class="faq"><summary>What's the advantage of working with a mortgage broker?</summary><p>A broker can compare loan programs across many wholesale lenders instead of one bank's menu, which means more ways to find the right fit for your situation.</p></details><details class="faq"><summary>Which states can you help me in?</summary><p>I'm licensed in 34 states, including California, Texas, Florida, and Arizona. The full list is above, and you can verify it on NMLS Consumer Access.</p></details><details class="faq"><summary>I'm self-employed. Can I still qualify?</summary><p>Often, yes. Depending on your situation, a traditional loan using tax returns or a bank statement loan may work.</p></details><details class="faq"><summary>Do you work with loan officers who want to join your team?</summary><p>Yes. I'm growing my team and welcome confidential conversations. Visit the Join My Team page to learn more.</p></details></div>
     </div>
   </section>
 
