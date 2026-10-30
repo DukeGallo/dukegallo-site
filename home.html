@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Duke Gallo, Vice President at West Capital Lending. Mortgage broker and team leader in Southern California. NMLS #2084855.">
+<meta name="description" content="Duke Gallo, VP at West Capital Lending, is a licensed mortgage broker in Southern California helping homebuyers, homeowners, and loan officers. NMLS #2084855.">
+{{HEAD_EXTRA}}
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Duke Gallo</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Duke Gallo | Mortgage Broker &amp; VP, West Capital Lending</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: a personal page read top to bottom; large name and portrait, then story, career timeline, life outside work, what I do, contact. */
@@ -31,7 +32,13 @@ body{background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--body);
 a{color:var(--accent)}
 h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.015em}
 .label{font:500 12px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.ph{background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:4px;font-size:.92em}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;z-index:20}.skip:focus{left:16px}
+.mark{color:var(--ink);text-decoration:none}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn:hover{filter:brightness(1.08)}
+.mobile-cta{display:none}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 header.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:24px;flex-wrap:wrap}
@@ -84,7 +91,8 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 .row{display:grid;grid-template-columns:140px 1fr auto;gap:16px;align-items:center;padding-block:16px;border-bottom:1px solid var(--line)}
 .row>*{min-width:0}
 .row .v{font:500 16px var(--mono);overflow-wrap:anywhere}
-.chip{font:500 13px var(--body);color:var(--accent);background:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;text-decoration:none}
+.chip{display:inline-flex;align-items:center;min-height:40px;font:500 14px var(--body);color:var(--accent);background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 
 footer{padding-block:32px 48px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
 footer p{margin:0 0 8px;max-width:90ch}
@@ -93,21 +101,38 @@ footer p{margin:0 0 8px;max-width:90ch}
   .hero{grid-template-columns:1fr;gap:32px;padding-block:32px 56px}
   .portrait{max-width:260px}
   .split{grid-template-columns:1fr;gap:24px}
-  .facts,.life{grid-template-columns:1fr 1fr}
+  .life{grid-template-columns:1fr 1fr}
   .timeline li{grid-template-columns:1fr;gap:6px}
   .row{grid-template-columns:1fr auto}
   .row .label{grid-column:1/-1}
   section{padding-block:56px}
 }
-@media (max-width:480px){.facts,.life{grid-template-columns:1fr}}
+.row .chips{justify-content:flex-start}
+@media (max-width:600px){
+  .facts{grid-template-columns:1fr;gap:20px}
+  .life{grid-template-columns:1fr;gap:28px}
+  .life .img{aspect-ratio:auto;min-height:84px;align-items:center;padding:14px 18px}
+  .life .img svg{width:36px;height:36px}
+  nav{gap:6px 16px}
+  .hero h1{font-size:clamp(56px,18vw,96px)}
+  .portrait{max-width:220px}
+  section{padding-block:44px}
+  .row{grid-template-columns:1fr}
+  .mobile-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;gap:8px;
+    padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+    background:var(--bg);border-top:1px solid var(--line)}
+  .mobile-cta a{flex:1;justify-content:center}
+  footer{padding-bottom:110px}
+}
 </style>
 </head>
 <body>
 
 
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
   <header class="top">
-    <div class="mark">DG</div>
+    <a class="mark" href="/" aria-label="Duke Gallo home">DG</a>
     <nav aria-label="Primary">
       <a href="#about">About</a>
       <a href="#career">Career</a>
@@ -117,14 +142,20 @@ footer p{margin:0 0 8px;max-width:90ch}
     </nav>
   </header>
 
+<main id="main">
   <div class="hero">
     <div>
       <div class="label">dukegallo.com</div>
       <h1>Duke<br>Gallo</h1>
       <p class="intro">Mortgage broker, team leader, and Vice President at West Capital Lending. I build teams that help people buy and keep their homes.</p>
-      <div class="meta"><span>Southern California</span><span>San Francisco State University</span><span>UWM Advisory Council</span></div>
+      <div class="meta"><span>Southern California</span><span>NMLS #2084855</span><span>UWM Advisory Council</span></div>
+      <div class="cta-row">
+        <a class="btn primary" href="tel:+19496885959">Call (949) 688-5959</a>
+        <a class="btn" href="mailto:dgallo@westcapitallending.com">Email me</a>
+        <a class="btn" href="/blog/">Read the blog</a>
+      </div>
     </div>
-    <img class="portrait" src="/duke.jpg" alt="Portrait of Duke Gallo" width="800" height="800">
+    <img class="portrait" src="/duke.jpg" alt="Duke Gallo, Vice President at West Capital Lending" width="800" height="800" fetchpriority="high">
   </div>
 
   <section id="about">
@@ -141,15 +172,14 @@ footer p{margin:0 0 8px;max-width:90ch}
     <div class="split">
       <div><div class="label">Career</div><h2>Where I've been</h2></div>
       <ol class="timeline">
-        <li><span class="when"><span class="ph">2026</span> – Now</span><div>
+        <li><span class="when">Now</span><div>
           <h3>Vice President</h3><div class="org">West Capital Lending</div>
-          <p><span class="ph">One or two lines on your role and focus here.</span></p></div></li>
+          <p>Leading and mentoring loan officers, building the team, and helping clients across Southern California find the right financing.</p></div></li>
         <li><span class="when">2020 – 2026</span><div>
           <h3>Vice President · Branch Manager</h3><div class="org">E Mortgage Capital, Inc.</div>
           <p>Started as Branch Manager and Licensed Mortgage Broker in Costa Mesa, leading 20 loan officers and staff. Promoted to Vice President in 2026, leading a team of 45 and building the training and sales strategy behind its growth.</p></div></li>
-        <li><span class="when"><span class="ph">Year</span></span><div>
-          <h3>Education</h3><div class="org">San Francisco State University</div>
-          <p><span class="ph">Degree and major, if you'd like them listed.</span></p></div></li>
+        <li><span class="when">Education</span><div>
+          <h3>San Francisco State University</h3></div></li>
       </ol>
     </div>
   </section>
@@ -193,26 +223,24 @@ footer p{margin:0 0 8px;max-width:90ch}
     <div class="label">Contact</div>
     <h2>Let's talk.</h2>
     <div class="rows">
-      <div class="row"><span class="label">Phone</span><span class="v" id="c-phone">(949) 688-5959</span><button class="chip" type="button" data-copy="c-phone">Copy</button></div>
-      <div class="row"><span class="label">Email</span><span class="v" id="c-email">dgallo@westcapitallending.com</span><button class="chip" type="button" data-copy="c-email">Copy</button></div>
-      <div class="row"><span class="label">LinkedIn</span><span class="v">linkedin.com/in/duke-gallo</span><a class="chip" href="https://www.linkedin.com/in/duke-gallo/" target="_blank" rel="noopener">Open</a></div>
+      <div class="row"><span class="label">Phone</span><span class="v">(949) 688-5959</span><span class="chips"><a class="chip" href="tel:+19496885959">Call</a><a class="chip" href="sms:+19496885959">Text</a></span></div>
+      <div class="row"><span class="label">Email</span><span class="v">dgallo@westcapitallending.com</span><span class="chips"><a class="chip" href="mailto:dgallo@westcapitallending.com">Email</a></span></div>
+      <div class="row"><span class="label">Instagram</span><span class="v">@dukegallo</span><span class="chips"><a class="chip" href="https://www.instagram.com/dukegallo/" target="_blank" rel="noopener">Follow</a></span></div>
+      <div class="row"><span class="label">LinkedIn</span><span class="v">linkedin.com/in/duke-gallo</span><span class="chips"><a class="chip" href="https://www.linkedin.com/in/duke-gallo/" target="_blank" rel="noopener">Connect</a></span></div>
     </div>
   </section>
+</main>
 
   <footer>
     <p>Duke Gallo, NMLS #2084855 · West Capital Lending, Inc. · Equal Housing Opportunity. Verify licensing at <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener">nmlsconsumeraccess.org</a>.</p>
     <p>This is not a commitment to lend. All loans are subject to credit approval and underwriting. Not all applicants will qualify.</p>
-    <p>© 2026 Duke Gallo</p>
+    <p><a href="https://www.instagram.com/dukegallo/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.linkedin.com/in/duke-gallo/" target="_blank" rel="noopener">LinkedIn</a> · <a href="/blog/">Blog</a></p>
+    <p>© {{YEAR}} Duke Gallo</p>
   </footer>
 </div>
+<nav class="mobile-cta" aria-label="Quick contact"><a class="btn primary" href="tel:+19496885959">Call</a><a class="btn" href="sms:+19496885959">Text</a><a class="btn" href="mailto:dgallo@westcapitallending.com">Email</a></nav>
 
-<script>
-document.querySelectorAll('button.chip').forEach(b=>b.addEventListener('click',()=>{
-  const el=document.getElementById(b.dataset.copy);
-  navigator.clipboard.writeText(el.textContent).then(()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1500);})
-  .catch(()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);});
-}));
-</script>
+
 
 </body>
 </html>
