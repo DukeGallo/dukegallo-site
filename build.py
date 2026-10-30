@@ -15,7 +15,39 @@ AUTHOR = "Duke Gallo"
 NMLS = "2084855"
 INSTAGRAM = "https://www.instagram.com/dukegallo/"
 LINKEDIN = "https://www.linkedin.com/in/duke-gallo/"
-OG_DEFAULT = f"{SITE}/og-image.jpg"
+# --- Company transition: Duke joins West Capital Lending on START_WCL ---
+from zoneinfo import ZoneInfo
+TODAY = datetime.datetime.now(ZoneInfo("America/Los_Angeles")).date()
+if os.environ.get("BUILD_DATE"):  # for previews: BUILD_DATE=2026-12-01 python3 build.py . /tmp/x
+    TODAY = datetime.date.fromisoformat(os.environ["BUILD_DATE"])
+START_WCL = datetime.date(2026, 12, 1)
+AT_WCL = TODAY >= START_WCL
+WCL_NMLS = "1566096"
+if AT_WCL:
+    PH = {
+        "TITLE": "Duke Gallo | Mortgage Broker &amp; VP, West Capital Lending",
+        "DESC": "Duke Gallo, Vice President at West Capital Lending, is a licensed mortgage broker in Southern California helping buyers, homeowners, and loan officers.",
+        "INTRO": "Mortgage broker, team leader, and Vice President at West Capital Lending. I build teams that help people buy and keep their homes.",
+        "WCL_WHEN": "Dec 2026 – Now",
+        "WCL_DESC": "Leading and mentoring loan officers, building the team, and helping clients across Southern California find the right financing.",
+        "ABOUT_NOW": "Today I'm a Vice President at West Capital Lending.",
+        "LICENSE_LINE": f"Duke Gallo, NMLS #{NMLS}, licensed by the California Department of Financial Protection and Innovation · West Capital Lending, Inc., NMLS #{WCL_NMLS} · Equal Housing Opportunity.",
+        "BYLINE": "Vice President, West Capital Lending",
+    }
+    OG_FILE = "og-image.jpg"
+else:
+    PH = {
+        "TITLE": "Duke Gallo | Mortgage Broker &amp; Team Leader, Southern California",
+        "DESC": "Duke Gallo is a licensed mortgage broker and team leader in Southern California, joining West Capital Lending as Vice President on December 1, 2026.",
+        "INTRO": "Mortgage broker and team leader, joining West Capital Lending as Vice President on December 1. I build teams that help people buy and keep their homes.",
+        "WCL_WHEN": "From Dec 2026",
+        "WCL_DESC": "Joining West Capital Lending as Vice President on December 1, 2026, to lead and grow a team of loan officers serving clients across Southern California.",
+        "ABOUT_NOW": "On December 1, 2026, I'm joining West Capital Lending as Vice President.",
+        "LICENSE_LINE": f"Duke Gallo, NMLS #{NMLS}, licensed by the California Department of Financial Protection and Innovation · Joining West Capital Lending, Inc. (NMLS #{WCL_NMLS}) on December 1, 2026 · Equal Housing Opportunity.",
+        "BYLINE": "Mortgage broker, NMLS #" + NMLS,
+    }
+    OG_FILE = "og-image-joining.jpg"
+OG_DEFAULT = f"{SITE}/{OG_FILE}"
 ICONS = """<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -23,12 +55,13 @@ ICONS = """<link rel="icon" href="/favicon.ico" sizes="48x48">
 <meta name="theme-color" content="#1d5b78">"""
 PERSON = {"@type": "Person", "@id": SITE + "/#duke", "name": "Duke Gallo", "url": SITE + "/",
           "image": SITE + "/duke.jpg", "jobTitle": "Vice President, Mortgage Loan Originator",
-          "worksFor": {"@type": "Organization", "name": "West Capital Lending, Inc."},
           "alumniOf": {"@type": "CollegeOrUniversity", "name": "San Francisco State University"},
           "address": {"@type": "PostalAddress", "addressRegion": "CA", "addressCountry": "US"},
           "knowsAbout": ["Mortgages", "Home loans", "Refinancing", "FHA loans", "VA loans", "Jumbo loans", "Non-QM loans", "Real estate finance"],
           "identifier": {"@type": "PropertyValue", "propertyID": "NMLS", "value": NMLS},
           "sameAs": [LINKEDIN, INSTAGRAM]}
+if AT_WCL:
+    PERSON["worksFor"] = {"@type": "Organization", "name": "West Capital Lending, Inc.", "identifier": {"@type": "PropertyValue", "propertyID": "NMLS", "value": WCL_NMLS}}
 
 src, dist = sys.argv[1], sys.argv[2]
 shutil.rmtree(dist, ignore_errors=True)
@@ -40,6 +73,8 @@ for f in glob.glob(os.path.join(src, "posts", "*.json")):
     for k in ["slug", "title", "description", "date", "category", "image", "image_alt", "body_html"]:
         assert p.get(k), f"{f}: missing {k}"
     assert re.fullmatch(r"[a-z0-9-]+", p["slug"]), f"bad slug {p['slug']}"
+    if datetime.date.fromisoformat(p["date"]) > TODAY:
+        continue  # scheduled for later
     posts.append(p)
 posts.sort(key=lambda p: p["date"], reverse=True)
 slugs = [p["slug"] for p in posts]
@@ -101,7 +136,7 @@ footer p{margin:0 0 8px;max-width:90ch}
 """
 
 FOOTER = f"""<footer>
-    <p>Duke Gallo, NMLS #{NMLS} · West Capital Lending, Inc. · Equal Housing Opportunity. Verify licensing at <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener">nmlsconsumeraccess.org</a>.</p>
+    <p>{PH["LICENSE_LINE"]} Verify licensing at <a href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener">nmlsconsumeraccess.org</a>.</p>
     <p>Blog content is for general education only and is not a commitment to lend, a rate quote, or financial, legal, or tax advice. All loans are subject to credit approval and underwriting. Not all applicants will qualify. Programs and guidelines change; contact me for current details.</p>
     <p><a href="{INSTAGRAM}" target="_blank" rel="noopener">Instagram</a> · <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a> · <a href="/blog/">Blog</a> · <a href="/blog/feed.xml">RSS</a></p>
     <p>© {datetime.date.today().year} Duke Gallo</p>
@@ -177,7 +212,7 @@ for i, p in enumerate(posts):
     <div class="meta"><a href="/blog/">Blog</a><span>{esc(p['category'])}</span><span>{read_min(p['body_html'])} min read</span></div>
     <h1>{esc(p['title'])}</h1>
     <p class="dek">{esc(p['description'])}</p>
-    <div class="byline"><img src="/duke.jpg" alt="Duke Gallo" width="44" height="44"><div><b>Duke Gallo</b><span>Vice President, West Capital Lending · <time datetime="{p['date']}">{nice_date(p['date'])}</time></span></div></div>
+    <div class="byline"><img src="/duke.jpg" alt="Duke Gallo" width="44" height="44"><div><b>Duke Gallo</b><span>{PH["BYLINE"]} · <time datetime="{p['date']}">{nice_date(p['date'])}</time></span></div></div>
     <figure class="hero-img" style="margin-inline:0"><img src="{esc(p['image'])}" alt="{esc(p['image_alt'])}" width="1440" height="810" fetchpriority="high">{credit}</figure>
     <div class="body">
 {p['body_html']}
@@ -219,13 +254,15 @@ blog_body = f"""{header('blog')}
 os.makedirs(os.path.join(dist, "blog"), exist_ok=True)
 open(os.path.join(dist, "blog", "index.html"), "w").write(page(
     "Mortgage & Real Estate Blog | Duke Gallo",
-    "Mortgage and real estate guides from Duke Gallo, Vice President at West Capital Lending: buying, refinancing, market insight, and loan officer careers.",
+    "Mortgage and real estate guides from Duke Gallo, a licensed Southern California mortgage broker: buying, refinancing, market insight, and loan officer careers.",
     f"{SITE}/blog/", blog_body,
     jsonld={"@context": "https://schema.org", "@type": "Blog", "name": "The Duke Gallo Blog", "url": f"{SITE}/blog/",
             "author": {"@id": SITE + "/#duke"}, "publisher": PERSON}))
 
 # Homepage
 home = open(os.path.join(src, "home.html")).read()
+for k, v in PH.items():
+    home = home.replace("{{" + k + "}}", v)
 latest = ""
 if posts:
     latest = ('  <section id="blog">\n    <div class="split">\n      <div><div class="label">From the blog</div><h2>Latest writing</h2>'

@@ -1,7 +1,7 @@
 # Posting guide for the Duke Gallo blog
 
 Every new post is one JSON file in `posts/`, named `YYYY-MM-DD-slug.json`.
-Netlify rebuilds the site (`python3 build.py . dist`) on every push to `main`.
+Netlify rebuilds the site (`python3 build.py . dist`) on every push to `main`. Posts dated in the future are hidden until that date and appear on the first rebuild on or after it.
 
 ## Who it's for (rotate between these)
 1. **Homebuyers and homeowners** in Southern California: buying, refinancing, equity, credit, closing costs, loan programs (FHA, VA, jumbo, non-QM, bank statement, DSCR), plain-English market explainers.
@@ -11,7 +11,9 @@ Netlify rebuilds the site (`python3 build.py . dist`) on every push to `main`.
 Check `posts/` before choosing a topic. Never repeat a topic or angle that's already covered; rotate audiences so no two consecutive posts target the same one.
 
 ## Voice
-- First person, as Duke Gallo, Vice President at West Capital Lending, who leads a team of 45 loan officers and staff.
+- First person, as Duke Gallo, a licensed mortgage broker (NMLS #2084855) in Southern California who has led a team of 45 loan officers and staff.
+- Employer: Duke joins **West Capital Lending as Vice President on December 1, 2026**. Before that date, never describe him as currently working at West Capital Lending; say he is joining it on December 1 if it comes up. From December 1 onward, refer to him as Vice President at West Capital Lending. Never mention his previous employer by name, and never say anything negative about any former employer.
+- The byline, footer disclosures and company references in the site template switch automatically on December 1; don't add company names or NMLS disclosures inside post bodies.
 - Warm, direct, confident, practical. Short paragraphs. No fluff, no hype, no clichés ("in today's fast-paced market", "navigating the complex world of").
 - Open with a concrete, relatable hook (a client scenario stated generally, a common misconception, a sharp question). Do not invent named clients or specific client stories presented as real.
 - End with a clear takeaway section.
